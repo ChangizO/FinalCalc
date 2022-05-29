@@ -1,0 +1,29 @@
+package MyProject.UltimateCalculator;
+
+public class MindCalc {
+    public static String calculate(Number first, Number second, String operation) throws Exception {
+
+        int result;
+
+        switch (operation) {
+            case "+":
+                result = first.getValue() + second.getValue();
+                break;
+            case "-":
+                result = first.getValue() - second.getValue();
+                break;
+            case "*":
+                result = first.getValue() * second.getValue();
+                break;
+            case "/":
+                result = first.getValue() / second.getValue();
+                break;
+            default:
+                throw new Exception("Only [+/-*] sign`s allowed");
+        }
+
+        if (first.getType() == NumberType.ROMAN) {
+            return NumberStorage.ConvertRoman(result);
+        } else return String.valueOf(result);
+    }
+}
