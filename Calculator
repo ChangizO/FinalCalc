@@ -1,0 +1,33 @@
+package MyProject.UltimateCalculator;
+
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+
+            System.out.print("Input: ");
+            String line = scanner.nextLine();
+
+            try {
+                String[] symbols = line.split(" ");
+                if (symbols.length != 3)
+                    throw new Exception("Invalid input parameters");
+
+                Number firstNumber = NumberStorage.parsing(symbols[0]);
+                Number secondNumber = NumberStorage.parsing(symbols[2], firstNumber.getType());
+                String result = MindCalc.calculate(firstNumber, secondNumber, symbols[1]);
+                System.out.println("Output: " + result);
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+
+                break;
+            }
+        }
+
+        scanner.close();
+    }
+}
