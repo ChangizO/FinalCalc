@@ -8,22 +8,21 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
         while (true) {
 
-            System.out.print("Input: ");
-            String line = scanner.nextLine();
+            System.out.print("Enter your expression: ");
+            String UserInput = scanner.nextLine();
 
             try {
-                String[] symbols = line.split(" ");
+                String[] array1 = UserInput.split(" ");
                 if (symbols.length != 3)
                     throw new Exception("Invalid input parameters");
 
-                Number firstNumber = NumberStorage.parsing(symbols[0]);
-                Number secondNumber = NumberStorage.parsing(symbols[2], firstNumber.getType());
-                String result = MindCalc.calculate(firstNumber, secondNumber, symbols[1]);
+                Number firstNumber = NumberStorage.parsing(array1[0]);
+                Number secondNumber = NumberStorage.parsing(array1[2], firstNumber.getType());
+                String result = MindCalc.calculate(firstNumber, secondNumber, array1[1]);
                 System.out.println("Output: " + result);
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-
                 break;
             }
         }
