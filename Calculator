@@ -9,11 +9,11 @@ public class Calculator {
         while (true) {
 
             System.out.print("Enter your expression: ");
-            String UserInput = scanner.nextLine();
+            String userInput = scanner.nextLine();
 
             try {
-                String[] array1 = UserInput.split(" ");
-                if (symbols.length != 3)
+                String[] array1 = userInput.split(" ");
+                if (array1.length != 3)
                     throw new Exception("Invalid input parameters");
 
                 Number firstNumber = NumberStorage.parsing(array1[0]);
