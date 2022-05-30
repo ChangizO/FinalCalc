@@ -23,7 +23,7 @@ public class MindCalc {
         }
 
         if (first.getType() == NumberType.ROMAN) {
-            return NumberStorage.ConvertRoman(result);
+            return NumberStorage.convertRoman(result);
         } else return String.valueOf(result);
     }
 }
