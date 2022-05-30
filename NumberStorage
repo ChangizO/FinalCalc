@@ -27,7 +27,7 @@ public class NumberStorage {
             value = Integer.parseInt(element);
             type = NumberType.ARABIC;
         } catch (NumberFormatException e) {
-            value = ConvertArabic(element);
+            value = convertArabic(element);
             type = NumberType.ROMAN;
         }
 
@@ -58,17 +58,17 @@ public class NumberStorage {
         return result;
     }
 
-    static String ConvertRoman(int number) {
+    static String convertRoman(int number) {
 
         int i = romanValue.floorKey(number);
 
         if (number == i) {
             return romanValue.get(number);
         }
-        return romanValue.get(i) + ConvertRoman(number - i);
+        return romanValue.get(i) + convertRoman(number - i);
     }
 
-    static int ConvertArabic(String roman) throws Exception {
+    static int convertArabic(String roman) throws Exception {
         int result = 0;
 
         int i = 0;
