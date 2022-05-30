@@ -4,18 +4,18 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class NumberStorage {
-    private final static TreeMap<Integer, String> romanValue = new TreeMap<>();
+    private final static TreeMap<Integer, String> ROMAN_VALUE e = new TreeMap<>();
 
     static {
-        romanValue.put(1, "I");
-        romanValue.put(4, "IV");
-        romanValue.put(5, "V");
-        romanValue.put(9, "IX");
-        romanValue.put(10, "X");
-        romanValue.put(40, "XL");
-        romanValue.put(50, "L");
-        romanValue.put(90, "XC");
-        romanValue.put(100, "C");
+        ROMAN_VALUE.put(1, "I");
+        ROMAN_VALUE.put(4, "IV");
+        ROMAN_VALUE.put(5, "V");
+        ROMAN_VALUE.put(9, "IX");
+        ROMAN_VALUE.put(10, "X");
+        ROMAN_VALUE.put(40, "XL");
+        ROMAN_VALUE.put(50, "L");
+        ROMAN_VALUE.put(90, "XC");
+        ROMAN_VALUE.put(100, "C");
     }
 
     static Number parsing(String element) throws Exception {
@@ -52,7 +52,7 @@ public class NumberStorage {
 
         int result = -1;
 
-        for (Map.Entry<Integer, String> entry : romanValue.entrySet()) {
+        for (Map.Entry<Integer, String> entry : ROMAN_VALUE.entrySet()) {
             if (entry.getValue().equals(String.valueOf(character))) result = entry.getKey();
         }
         return result;
@@ -60,12 +60,12 @@ public class NumberStorage {
 
     static String convertRoman(int number) {
 
-        int i = romanValue.floorKey(number);
+        int i = ROMAN_VALUE.floorKey(number);
 
         if (number == i) {
-            return romanValue.get(number);
+            return ROMAN_VALUE.get(number);
         }
-        return romanValue.get(i) + convertRoman(number - i);
+        return ROMAN_VALUE.get(i) + convertRoman(number - i);
     }
 
     static int convertArabic(String roman) throws Exception {
